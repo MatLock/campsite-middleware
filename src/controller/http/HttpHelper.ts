@@ -10,11 +10,11 @@ const apiClient = axios.create({
     }
 });
 
-export async function get(path:String){
+export const get = async (path: String) => {
     // @ts-ignore
-   let response = await apiClient.get<T>(path,{});
-   let reservationResponse: Response = response.data;
-   return reservationResponse;
+    let response = await apiClient.get<T>(path, {});
+    let reservationResponse: Response = response.data;
+    return reservationResponse;
 }
 
 /*
