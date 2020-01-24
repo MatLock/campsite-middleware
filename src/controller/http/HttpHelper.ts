@@ -13,8 +13,7 @@ const apiClient = axios.create({
 export const get = async (path: String) => {
     // @ts-ignore
     let response = await apiClient.get<T>(path, {});
-    let reservationResponse: Response = response.data;
-    return reservationResponse;
+    return response.data;
 }
 
 /*
