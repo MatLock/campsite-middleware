@@ -4,6 +4,7 @@ import { messageToResponse } from './controller/http/middleware/ResponsesMiddlew
 import * as controller from './controller/CampsiteController';
 
 const app = express();
+const COMMON_ENDPOINT = '/campsite-middleware/reservation';
 
 // Middleware
 app.use(messageToResponse);
@@ -14,10 +15,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.get('/campsite-middleware/reservation/availability', controller.availability);
-app.get('/campsite-middleware/reservation/:id',controller.getReservation)
-app.post('/campsite-middleware/reservation',controller.createReservation);
-app.put('/campsite-middleware/reservation/:id',controller.updateReservation);
-app.delete('/campsite-middleware/reservation/:id',controller.deleteReservation);
+app.get(`${COMMON_ENDPOINT}/availability`, controller.availability);
+app.get(`${COMMON_ENDPOINT}/:id`,controller.getReservation)
+app.post(COMMON_ENDPOINT,controller.createReservation);
+app.put(`${COMMON_ENDPOINT}/:id`,controller.updateReservation);
+app.delete(`${COMMON_ENDPOINT}/:id`,controller.deleteReservation);
 
 export default app;
