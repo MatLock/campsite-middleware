@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const client = process.env.SERVER || 'http://localhost:8888/campsite';
 const apiClient = axios.create({
     baseURL: client,
@@ -10,34 +9,34 @@ const apiClient = axios.create({
     }
 });
 
-export const get = async (path:String,parameters:Object) => {
+export const GET = async (path:String,parameters:any) => {
     // @ts-ignore
-    let response = await apiClient.get<T>(path, {params: parameters});
-    return response.data;
-}
-
-/*
-const availability = async (newUser: NewUser) => {
-    try {
-        const response = await apiClient.post<User>('/users', newUser);
-        const user = response.data;
-        return user;
-    } catch (err) {
-        if (err && err.response) {
-            const axiosError = err as AxiosError<ServerError>
-            return axiosError.response.data;
-        }
-
-        throw err;
-    }
+    return await apiClient.get(path, {params: parameters});
 };
 
-
-export async function get<T>(
-    path: string,
-    args: RequestInit = { method: "get" }
-): Promise<HttpResponse<T>> {
-    return await http<T>(new Request(path, args));
+export const POST = async (path:String,parameters:any,body:any) =>{
+  try{
+   // @ts-ignore
+   return await apiClient.post(path,body);
+  }catch (error) {
+   return error.response;
+  }
 };
 
- */
+export const DELETE = async (path:String,parameters:any) =>{
+  try{
+    // @ts-ignore
+    return await apiClient.delete(path,{params:parameters});
+  }catch(error){
+    return error.response;
+  }
+};
+
+export const PUT = async (path:String,body:any) =>{
+  try{
+    // @ts-ignore
+    return await apiClient.put(path,body);
+  }catch(error){
+    return error.response;
+  }
+};

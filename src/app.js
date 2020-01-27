@@ -14,7 +14,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.get("/campsite-middleware/availability", controller.availability);
-
+app.get('/campsite-middleware/reservation/availability', controller.availability);
+app.get('/campsite-middleware/reservation/:id',controller.getReservation)
+app.post('/campsite-middleware/reservation',controller.createReservation);
+app.put('/campsite-middleware/reservation/:id',controller.updateReservation);
+app.delete('/campsite-middleware/reservation/:id',controller.deleteReservation);
 
 export default app;
