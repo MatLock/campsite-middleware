@@ -1,5 +1,4 @@
 export class Response {
-    metadata: String = '';
     message: String;
     error: Boolean;
     response: Object;

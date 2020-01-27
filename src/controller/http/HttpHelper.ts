@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Response} from '../response/Response';
+
 
 const client = process.env.SERVER || 'http://localhost:8888/campsite';
 const apiClient = axios.create({
@@ -10,9 +10,9 @@ const apiClient = axios.create({
     }
 });
 
-export const get = async (path: String) => {
+export const get = async (path:String,parameters:Object) => {
     // @ts-ignore
-    let response = await apiClient.get<T>(path, {});
+    let response = await apiClient.get<T>(path, {params: parameters});
     return response.data;
 }
 
