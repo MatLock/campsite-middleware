@@ -9,12 +9,12 @@ const apiClient = axios.create({
     }
 });
 
-export const GET = async (path:String,parameters:any) => {
+const GET = async (path:String,parameters:any) => {
     // @ts-ignore
     return await apiClient.get(path, {params: parameters});
 };
 
-export const POST = async (path:String,parameters:any,body:any) =>{
+const POST = async (path:String,parameters:any,body:any) =>{
   try{
    // @ts-ignore
    return await apiClient.post(path,body);
@@ -23,7 +23,7 @@ export const POST = async (path:String,parameters:any,body:any) =>{
   }
 };
 
-export const DELETE = async (path:String,parameters:any) =>{
+const DELETE = async (path:String,parameters:any) =>{
   try{
     // @ts-ignore
     return await apiClient.delete(path,{params:parameters});
@@ -32,7 +32,7 @@ export const DELETE = async (path:String,parameters:any) =>{
   }
 };
 
-export const PUT = async (path:String,body:any) =>{
+const PUT = async (path:String,body:any) =>{
   try{
     // @ts-ignore
     return await apiClient.put(path,body);
@@ -40,3 +40,10 @@ export const PUT = async (path:String,body:any) =>{
     return error.response;
   }
 };
+
+export {
+  GET,
+  POST,
+  PUT,
+  DELETE
+}
